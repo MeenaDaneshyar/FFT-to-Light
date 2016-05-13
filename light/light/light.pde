@@ -1,9 +1,11 @@
-//This Processing sketch uses FFT to determin the the frequency of audio detected and maps this data to a light spectrum. As it has proven very difficult to create the 
-//visible light spectrum using computer colours I have instead used a image of the visual light spectrum and acording to the frequency take the pixel data from a point 
-//along the image and display this across the full screen.
+//This Processing sketch uses an FFT to determine the the frequency of audio detected and maps this data to a light spectrum. 
+//As it has proven very difficult to create the visible light spectrum using computer colours (see http://stackoverflow.com/questions/1472514/convert-light-frequency-to-rgb)
+//I have instead used an image of the visual light spectrum and according to the frequency, extract the pixel data from a point 
+//along the image and display this colour across the full screen.
 
-//uses example "FFTSpectrum" from sound library
-// Source for where I found the image(saved as a PImage called lightspectrum): https://commons.wikimedia.org/wiki/File:Inverse_visible_spectrum.svg
+//uses parts of the example "FFTSpectrum" from the Sound library
+// Source for the spectrum image and license information: https://commons.wikimedia.org/wiki/File:Inverse_visible_spectrum.svg
+
 
 
 import processing.sound.*; //import the sound library
@@ -28,7 +30,7 @@ void setup(){
  colorMode(HSB,100); //instead of using rgb use (hue,saturation and brightness //from colormode reference on Processing website
  lightspectrum = loadImage("spectrum.png");
  
- //If the Buffersize is larger than the FFT size, the FFT will fail
+ //If the Buffersize is larger than the FFT size, the FFT will fail, this is a part that was in the FFTSpectrum example.
  //so we set Buffersize equal to bands
  device = new AudioDevice(this,44000, bands); //set up the audio device
  
